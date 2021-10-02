@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using Models.Infra;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApi
 {
@@ -28,7 +22,7 @@ namespace WebApi
         {
             services.AddControllers();
 
-            services.AddDbContext<SmashContext>();
+            services.AddDbContext<SmashContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SmashContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

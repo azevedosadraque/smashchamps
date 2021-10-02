@@ -7,5 +7,8 @@ namespace Models.Infra
 {
     public class SmashContext : DbContext
     {
+        public SmashContext(DbContextOptions options) : base(options)
+        {
+        }
     }
 }
